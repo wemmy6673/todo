@@ -34,18 +34,9 @@ function addTask() {
 
 
       
-      //li.innerHTML = deletex;
-      //li.innerHTML = edit;
       listContainer.appendChild(li);
-
-      // setTimeout(() => {
-
-      //   listContainer.removeChild(li);
-      // }, 3000);
-
-      // icon.appendChild(div);
-
-      // hiddenIcon.style.display = 'flex';
+      inputBox.value = "";
+  
 
       i.onclick = function(){
         listContainer.removeChild(li);
@@ -62,7 +53,7 @@ function addTask() {
      
 
       
-
+      
       
 
     
