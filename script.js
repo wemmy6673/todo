@@ -48,8 +48,17 @@ function addTask() {
 
       const edit = () => {
           var newTask = prompt("edit task");
-          s.innerText = newTask;
+          
+      
+      while(newTask == ""){
+        alert("Enter task");
+        var newTask = prompt("edit task");
       }
+      if(!newTask){
+        return;
+      }
+      s.innerText = newTask;
+    }
      
 
       
