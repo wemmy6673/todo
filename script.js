@@ -1,6 +1,10 @@
 window.onload = function() {
-  const storage = JSON.parse(localStorage.getItem("tasks")) || [];
-
+  if (!localStorage.getItem("tasks")) {
+    localStorage.setItem("tasks", "[]");
+    return;
+  }
+  const storage = JSON.parse(localStorage.getItem("tasks"));
+  
   
 
   const listContainer = document.getElementById("list-container");
@@ -60,6 +64,22 @@ window.onload = function() {
     if(!newTask){
       return;
     }
+
+    // Changing the data in localStorage
+    let storage = JSON.parse(localStorage.getItem("tasks"));
+    const newStorage = storage.map(function(item) {
+      if (item.id == li.id) {
+        return {
+          ...item,
+          task: newTask,
+        }
+      }
+
+      return item;
+    })
+
+    localStorage.setItem("tasks", JSON.stringify(newStorage));  
+
     s.innerText = newTask;
   }
  
@@ -164,6 +184,17 @@ function addTask() {
       
       const edit = () => {
           var newTask = prompt("edit task");
+          let storage =JSON.parse(localStorage.getItem("tasks"));
+          const newStorage = storage.map(function(item){
+            if(item.id ==li.id){
+              return{
+                ...item,
+                task: newTask,
+              }
+              
+            }
+            return item;
+          })
           
       
       while(newTask == ""){
